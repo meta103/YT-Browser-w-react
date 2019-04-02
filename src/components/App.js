@@ -10,6 +10,10 @@ class App extends Component {
     selectedVideo: null
   }
 
+  componentDidMount() {
+    this.onTermSubmit('ariana grande')
+  }
+
   onTermSubmit = term => {
     youtube.get('/search', {
       params: {
@@ -17,7 +21,8 @@ class App extends Component {
       }
     }).then(result => {
       this.setState({
-        videos: result.data.items
+        videos: result.data.items,
+        selectedVideo: result.data.items[0]
       })
     })
   }
