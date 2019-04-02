@@ -5,7 +5,8 @@ import Videolist from './VideoList';
 
 class App extends Component {
   state = {
-    videos: []
+    videos: [],
+    selectedVideo: null
   }
 
   onTermSubmit = term => {
@@ -20,11 +21,15 @@ class App extends Component {
     })
   }
 
+  onVideoSelect = video => {
+    console.log(video)
+  }
+
   render() {
     return (
       <div className="ui container">
         <SearchBar onFormSubmit={this.onTermSubmit} />
-        <Videolist videos={this.state.videos} />
+        <Videolist onVideoSelect={this.onVideoSelect} videos={this.state.videos} />
       </div>
     )
   }
